@@ -12,6 +12,7 @@ export interface exercicio {
     nome: string;
     series: number;
     repeticoes: number;
+    concluido?: boolean;
 }
 
 @Injectable({
@@ -60,6 +61,7 @@ export class ExerciciosService {
             nome: values.nome,
             series: values.series,
             repeticoes: values.repeticoes,
+            concluido: false
         }
 
         exercicioList.push(novoExercicio)
@@ -70,6 +72,7 @@ export class ExerciciosService {
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: 'Novo Exercício',
+            mode: 'ios',
             inputs: [
                 {
                     name: 'nome',
@@ -107,6 +110,7 @@ export class ExerciciosService {
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: 'Remover Exercício?',
+            mode: 'ios',
             buttons: [
                 {
                     text: 'Cancelar',

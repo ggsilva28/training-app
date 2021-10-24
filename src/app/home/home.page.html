@@ -1,18 +1,14 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title>
       Treinos
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button class="bloquear" (click)="bloquear()">
-        <ion-icon *ngIf="bloqueado" color="primary" name="lock-closed-outline"></ion-icon>
-        <ion-icon *ngIf="!bloqueado" color="primary" name="lock-open-outline"></ion-icon>
+      <ion-button [ngClass]="{'active': modoTreino}" class="btn-moto-treino modo-treino" (click)="alternarModoTreino()">
+        Modo Treino <ion-icon name="barbell-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true"  [ngClass]="{'bloqueado': bloqueado}">
 
   <ion-segment (ionChange)="segmentChanged($event)" [scrollable]="true" [value]="treinoSelected?.id">
     <ion-segment-button *ngFor="let treino of treinos" [value]="treino.id" (press)="removeTreino(treino.id)">
@@ -20,30 +16,12 @@
     </ion-segment-button>
   </ion-segment>
 
-  <ion-list class="ion-padding" *ngIf="treinos.length > 0">
+</ion-header>
 
-    <ion-item class="item-exercicio" *ngFor="let ex of exercicios" (click)="removeExercicio(ex.id)">
 
-      <ion-grid>
-        <ion-row>
-          <ion-label> {{ex.nome}}</ion-label>
-        </ion-row>
+<ion-content [fullscreen]="true" [ngClass]="{'modo-treino': modoTreino}">
 
-        <ion-row>
-          <ion-chip color="primary" outline>
-            <strong> Séries: </strong> {{ex.series}}
-          </ion-chip>
-          <ion-chip color="primary" outline>
-            <strong> Repetições: </strong> {{ex.repeticoes}}
-          </ion-chip>
-        </ion-row>
-      </ion-grid>
-
-    </ion-item>
-
-    <ion-button *ngIf="treinoSelected" (click)="addExercicio()" expand="block"> ADICIONAR EXERCÍCIO </ion-button>
-  </ion-list>
-
+  <list-exercicios [treino]="treinoSelected" [showList]="treinos.length > 0" [modoTreino]="modoTreino"></list-exercicios>
 
   <div class="vazio" *ngIf="treinos?.length == 0">
     <ion-img src="assets/img/Gym-rafiki.svg"></ion-img>
@@ -55,6 +33,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 
 </ion-content>

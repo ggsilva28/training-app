@@ -1,0 +1,23 @@
+<ion-list class="ion-padding" *ngIf="showList" [ngClass]="{'modo-treino': modoTreino}">
+
+  <ion-item lines="none" class="item-exercicio" *ngFor="let ex of exercicios" (click)="acaoItem(ex.id)" [ngClass]="{'concluido': ex.concluido}">
+
+    <ion-grid>
+      <ion-row>
+        <ion-label> {{ex.nome}}</ion-label>
+      </ion-row>
+
+      <ion-row>
+        <ion-chip [color]="(ex.concluido) ? 'dark' : 'primary'" outline>
+          <strong> Séries: </strong> {{ex.series}}
+        </ion-chip>
+        <ion-chip [color]="(ex.concluido) ? 'dark' : 'primary'" outline>
+          <strong> Repetições: </strong> {{ex.repeticoes}}
+        </ion-chip>
+      </ion-row>
+    </ion-grid>
+
+  </ion-item>
+
+  <ion-button *ngIf="treino" (click)="addExercicio()" expand="block"> ADICIONAR EXERCÍCIO </ion-button>
+</ion-list>

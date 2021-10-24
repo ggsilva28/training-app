@@ -1,0 +1,57 @@
+ion-item {
+  animation: forwards fadeIn 300ms;
+  margin-bottom: 15px;
+  transition: 300ms;
+  border-radius: 10px;
+  --padding-start: 0px;
+  --background: var(--ion-color-light);
+  --border-radius: 10px;
+
+  ion-label {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: transparent;
+    left: -200px;
+    bottom: -200px;
+    transition: 590ms;
+    z-index: 0;
+  }
+
+  &.concluido {
+    --color: var(--ion-color-success-contrast);
+    --background: transparent;
+
+    &::after {
+      background-color: var(--ion-color-success-fade);
+      width: 750px;
+      height: 750px;
+    }
+  }
+}
+
+ion-button {
+  animation: forwards show 300ms;
+}
+
+ion-chip {
+  strong {
+    margin-right: 5px;
+  }
+}
+
+.modo-treino {
+  ion-button {
+    animation: forwards hide 300ms;
+    pointer-events: none;
+  }
+}

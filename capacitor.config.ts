@@ -5,6 +5,7 @@ const config: CapacitorConfig = {
   appName: 'Treinos',
   webDir: 'www',
   bundledWebRuntime: false,
+  backgroundColor: '#ffffff'
 };
 
 export default config;

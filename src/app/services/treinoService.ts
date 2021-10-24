@@ -53,6 +53,7 @@ export class TreinosService {
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: 'Novo Treino',
+            mode: 'ios',
             inputs: [
                 {
                     name: 'nome',
@@ -78,6 +79,7 @@ export class TreinosService {
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: 'Remover Treino?',
+            mode: 'ios',
             buttons: [
                 {
                     text: 'Cancelar',

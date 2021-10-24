@@ -1,12 +1,14 @@
-ion-item {
-  margin-bottom: 15px;
-  --padding-start: 0px;
+ion-title{
+  font-size: 22px;
+  font-weight: bolder;
+}
 
-  ion-label {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
+ion-segment{
+  --background: var(--ion-color-light)
+}
+
+ion-fab {
+  animation: forwards show 300ms;
 }
 
 .vazio {
@@ -15,63 +17,31 @@ ion-item {
   text-align: center;
 }
 
-ion-chip:first-child {
-  margin-left: 0px !important;
+ion-buttons {
+  border-radius: 7px;
+  overflow: hidden;
 }
 
+.btn-moto-treino {
+  margin: 0px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
 
-ion-content {
+  ion-icon {
+    margin-left: 10px;
+  }
 
-  ion-button,
+  &.active {
+    background-color: rgba(var(--ion-color-primary-rgb), .1);
+    color: var(--ion-color-primary);
+  }
+}
+
+.modo-treino {
   ion-fab {
-    animation: forwards show 300ms;
-  }
-
-  &.bloqueado {
-
-    ion-button,
-    ion-fab {
-      animation: forwards hide 300ms;
-      pointer-events: none;
-    }
-
-    .item-exercicio {
-      pointer-events: none;
-    }
-  }
-}
-
-@keyframes hide {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(.9);
-  }
-}
-
-
-@keyframes show {
-  0% {
-    opacity: 0;
-    transform: scale(.9);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
+    animation: forwards hide 300ms;
+    pointer-events: none;
   }
 }
