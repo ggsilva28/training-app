@@ -1,0 +1,24 @@
+
+ion-segment-button{
+  max-width: 100px;
+}
+
+ion-item{
+  margin-bottom: 15px;
+  --padding-start: 0px;
+  ion-label{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+.vazio{
+  max-width: 80%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+ion-chip:first-child{
+  margin-left: 0px !important;
+}

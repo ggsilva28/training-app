@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Treinos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-segment (ionChange)="segmentChanged($event)" scrollable [value]="treinoSelected?.id">
+    <ion-segment-button *ngFor="let treino of treinos" [value]="treino.id" (press)="removeTreino(treino.id)" >
+      {{treino.nome}}
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list class="ion-padding" *ngIf="treinos.length > 0">
+
+    <ion-item  *ngFor="let ex of exercicios" (click)="removeExercicio(ex.id)" >
+      
+      <ion-grid>
+        <ion-row>
+          <ion-label> {{ex.nome}}</ion-label>
+        </ion-row>
+
+        <ion-row>
+          <ion-chip color="primary" outline>
+            <strong> Séries: </strong> {{ex.series}}
+          </ion-chip>
+          <ion-chip color="primary" outline>
+            <strong> Repetições: </strong> {{ex.repeticoes}}
+          </ion-chip>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+
+    <ion-button (click)="addExercicio()" expand="block"> ADICIONAR EXERCÍCIO </ion-button>
+  </ion-list>
+
+
+  <div class="vazio" *ngIf="treinos.length == 0">
+    <ion-img src="assets/img/Gym-rafiki.svg"></ion-img>
+    <strong>Nenhum treino encontrado</strong>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addTreino()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>
