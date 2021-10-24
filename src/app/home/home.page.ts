@@ -59,8 +59,9 @@ export class HomePage {
 
   async segmentChanged(e) {
     const id = e.detail.value
-    await this.getTreinos()
     this.treinoSelected = this.treinos.find(x => x.id == id)
-    this.getExercicios(this.treinoSelected.id)
+    if (this.treinoSelected) {
+      this.getExercicios(this.treinoSelected.id)
+    }
   }
 }

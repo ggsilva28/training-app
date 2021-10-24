@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-segment (ionChange)="segmentChanged($event)" scrollable [value]="treinoSelected?.id">
+  <ion-segment (ionChange)="segmentChanged($event)" [scrollable]="true" [value]="treinoSelected?.id">
     <ion-segment-button *ngFor="let treino of treinos" [value]="treino.id" (press)="removeTreino(treino.id)" >
       {{treino.nome}}
     </ion-segment-button>

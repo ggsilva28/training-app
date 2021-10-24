@@ -30,13 +30,17 @@ export class ExerciciosService {
     async getExercicio(treino_id: string) {
         const treinos = await this.storageService.get(this.storageKey)
         const treinoList = []
+        if (treinos) {
 
-        treinos.find(x => {
-            if (x.treino_id === treino_id)
-                treinoList.push(x)
-        })
+            treinos.find(x => {
+                if (x.treino_id === treino_id)
+                    treinoList.push(x)
+            })
 
-        return treinoList
+            return treinoList
+        }else{
+            return []
+        }
     }
 
     async addExercicio(treino_id: string) {
@@ -121,7 +125,7 @@ export class ExerciciosService {
         })
 
         await alert.present();
-        
+
         return alert.onDidDismiss()
     }
 }
