@@ -23,8 +23,10 @@ export class HomePage {
 
   async ionViewDidEnter() {
     await this.getTreinos()
-    this.treinoSelected = this.treinos[0]
-    this.getExercicios(this.treinoSelected.id)
+    this.treinoSelected = (this.treinos.length) ? this.treinos[0] : null
+    if (this.treinoSelected) {
+      this.getExercicios(this.treinoSelected.id)
+    }
   }
 
   async getTreinos() {
@@ -37,7 +39,7 @@ export class HomePage {
   }
 
   async removeTreino(treino_id: string) {
-    await this.treinosService.removerTreino(treino_id) 
+    await this.treinosService.removerTreino(treino_id)
     this.getTreinos()
   }
 
@@ -51,7 +53,7 @@ export class HomePage {
   }
 
   async removeExercicio(exercicio_id: string) {
-    await this.exerciciosService.removerExercicio(exercicio_id) 
+    await this.exerciciosService.removerExercicio(exercicio_id)
     this.getExercicios(this.treinoSelected.id)
   }
 

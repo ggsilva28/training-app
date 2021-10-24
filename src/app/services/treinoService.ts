@@ -25,7 +25,7 @@ export class TreinosService {
 
     async getTreinos() {
         const treinoList = await this.storageService.get(this.storageKey)
-        return treinoList
+        return (treinoList) ? treinoList : []
     }
 
     async addTreino() {
