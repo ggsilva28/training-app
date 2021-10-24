@@ -35,7 +35,7 @@
 
     </ion-item>
 
-    <ion-button (click)="addExercicio()" expand="block"> ADICIONAR EXERCÍCIO </ion-button>
+    <ion-button *ngIf="treinoSelected" (click)="addExercicio()" expand="block"> ADICIONAR EXERCÍCIO </ion-button>
   </ion-list>
 
 
