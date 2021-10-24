@@ -2,5 +2,10 @@
 	"appId": "io.ionic.starter",
 	"appName": "Treinos",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"SplashScreen": {
+		"launchShowDuration": 0,
+		"launchAutoHide": true,
+		"backgroundColor": "#ffffff"
+	}
 }

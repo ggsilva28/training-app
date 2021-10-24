@@ -1,19 +1,77 @@
-ion-item{
+ion-item {
   margin-bottom: 15px;
   --padding-start: 0px;
-  ion-label{
+
+  ion-label {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 10px;
   }
 }
 
-.vazio{
+.vazio {
   max-width: 80%;
   margin: 50px auto;
   text-align: center;
 }
 
-ion-chip:first-child{
+ion-chip:first-child {
   margin-left: 0px !important;
+}
+
+
+ion-content {
+
+  ion-button,
+  ion-fab {
+    animation: forwards show 300ms;
+  }
+
+  &.bloqueado {
+
+    ion-button,
+    ion-fab {
+      animation: forwards hide 300ms;
+      pointer-events: none;
+    }
+
+    .item-exercicio {
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.9);
+  }
+}
+
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

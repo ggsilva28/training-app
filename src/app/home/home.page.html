@@ -3,21 +3,27 @@
     <ion-title>
       Treinos
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="bloquear" (click)="bloquear()">
+        <ion-icon *ngIf="bloqueado" color="primary" name="lock-closed-outline"></ion-icon>
+        <ion-icon *ngIf="!bloqueado" color="primary" name="lock-open-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true"  [ngClass]="{'bloqueado': bloqueado}">
 
   <ion-segment (ionChange)="segmentChanged($event)" [scrollable]="true" [value]="treinoSelected?.id">
-    <ion-segment-button *ngFor="let treino of treinos" [value]="treino.id" (press)="removeTreino(treino.id)" >
+    <ion-segment-button *ngFor="let treino of treinos" [value]="treino.id" (press)="removeTreino(treino.id)">
       {{treino.nome}}
     </ion-segment-button>
   </ion-segment>
 
   <ion-list class="ion-padding" *ngIf="treinos.length > 0">
 
-    <ion-item class="item-exercicio"  *ngFor="let ex of exercicios" (click)="removeExercicio(ex.id)" >
-      
+    <ion-item class="item-exercicio" *ngFor="let ex of exercicios" (click)="removeExercicio(ex.id)">
+
       <ion-grid>
         <ion-row>
           <ion-label> {{ex.nome}}</ion-label>

@@ -14,6 +14,7 @@ export class HomePage {
   public treinos: Partial<treino[]> = []
   public treinoSelected: treino
   public exercicios: Partial<exercicio[]> = []
+  public bloqueado: boolean = false
 
   constructor(
     private treinosService: TreinosService,
@@ -63,5 +64,9 @@ export class HomePage {
     if (this.treinoSelected) {
       this.getExercicios(this.treinoSelected.id)
     }
+  }
+
+  bloquear(){
+    this.bloqueado = !this.bloqueado
   }
 }
