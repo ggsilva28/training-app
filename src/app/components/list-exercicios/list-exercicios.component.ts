@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 import { ExerciciosService, exercicio } from 'src/app/services/exercicioService';
 import { treino } from 'src/app/services/treinoService';
+import { EventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'list-exercicios',
@@ -18,7 +19,14 @@ export class ListExerciciosComponent implements OnInit {
 
   constructor(
     private exerciciosService: ExerciciosService,
-  ) { }
+    private eventsService: EventsService,
+  ) { 
+    this.eventsService.subscribe('getExercicios', () => {
+      setTimeout(() => {
+        this.getExercicios()
+      }, 300)
+    })
+  }
 
   ngOnInit() { }
 
@@ -29,17 +37,22 @@ export class ListExerciciosComponent implements OnInit {
   }
 
   async getExercicios() {
+    if (!this.treino) {
+      return []
+    }
     return this.exercicios = await this.exerciciosService.getExercicio(this.treino.id)
   }
 
   async addExercicio() {
     await this.exerciciosService.addExercicio(this.treino.id)
-    this.getExercicios()
   }
 
   async removeExercicio(exercicio_id: string) {
     await this.exerciciosService.removerExercicio(exercicio_id)
-    this.getExercicios()
+  }
+
+  async editExercicio(exercicio_id: string) {
+    await this.exerciciosService.editExercicio(exercicio_id)
   }
 
   alternarConcluido(exercicio_id: string) {
@@ -51,7 +64,7 @@ export class ListExerciciosComponent implements OnInit {
     if (this.modoTreino) {
       this.alternarConcluido(exercicio_id)
     } else {
-      this.removeExercicio(exercicio_id)
+      this.editExercicio(exercicio_id)
     }
   }
 }
