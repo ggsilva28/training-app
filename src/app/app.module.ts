@@ -10,21 +10,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { Storage } from '@ionic/storage-angular';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule
-  ],
-  providers: [
-    Storage,
-    {
-      provide: RouteReuseStrategy,
-      useClass: IonicRouteStrategy
-    },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule
+    ],
+    providers: [
+        Storage,
+        {
+            provide: RouteReuseStrategy,
+            useClass: IonicRouteStrategy
+        },
+    ],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }
