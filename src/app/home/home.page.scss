@@ -42,6 +42,14 @@ ion-segment {
 
 ion-fab {
   animation: forwards show 300ms;
+  backdrop-filter: blur(5px);
+
+  ion-fab-button {
+    --background: rgba(var(--ion-color-primary-rgb), 0.2);
+    --color: var(--ion-color-primary-contrast);
+    border-radius: 50%;
+    border: 1px solid rgba(var(--ion-color-light-rgb), 0.1);
+  }
 }
 
 .vazio {
@@ -81,6 +89,7 @@ ion-buttons {
 
 ion-item.modo-treino {
   --background: transparent;
+  --inner-padding-end: 0px;
 
   ion-label {
     color: var(--ion-color-primary-contrast);
