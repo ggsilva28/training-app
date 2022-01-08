@@ -1,25 +1,32 @@
-<ion-header [translucent]="true" class="ion-no-border">
+<ion-header [translucent]="true" class="ion-no-border" #header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title color="light">
       Treinos
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button [ngClass]="{'active': modoTreino}" class="btn-moto-treino modo-treino" (click)="alternarModoTreino()">
+      <!-- <ion-button [ngClass]="{'active': modoTreino}" class="btn-moto-treino modo-treino" (click)="alternarModoTreino()">
         Modo Treino <ion-icon name="barbell-outline"></ion-icon>
-      </ion-button>
+      </ion-button> -->
+
+      <ion-item class="modo-treino" lines="none" >
+        <ion-toggle mode="ios" (ionChange)="alternarModoTreino()" color="primary"></ion-toggle>
+      </ion-item>
+
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-segment (ionChange)="segmentChanged($event)" [scrollable]="true" [value]="treinoSelected?.id">
+
+</ion-header>
+
+
+<ion-content [fullscreen]="true" [ngClass]="{'modo-treino': modoTreino}" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+
+  <ion-segment mode="md" (ionChange)="segmentChanged($event)" [scrollable]="true" [value]="treinoSelected?.id">
     <ion-segment-button *ngFor="let treino of treinos" [value]="treino.id" (press)="removeTreino(treino.id)">
       {{treino.nome}}
     </ion-segment-button>
   </ion-segment>
 
-</ion-header>
-
-
-<ion-content [fullscreen]="true" [ngClass]="{'modo-treino': modoTreino}">
 
   <list-exercicios [treino]="treinoSelected" [showList]="treinos.length > 0" [modoTreino]="modoTreino"></list-exercicios>
 

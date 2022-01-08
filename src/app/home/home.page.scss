@@ -1,10 +1,43 @@
-ion-title{
+ion-header ion-toolbar {
+  --background: url("../../assets/img/header-glass.png") top center / cover
+    no-repeat;
+  height: 120px;
+}
+
+ion-content {
+  --background: linear-gradient(
+    45deg,
+    var(--ion-color-primary),
+    var(--ion-color-secondary),
+    var(--ion-color-primary),
+    var(--ion-color-secondary)
+  );
+}
+
+ion-title {
   font-size: 22px;
   font-weight: bolder;
 }
 
-ion-segment{
-  --background: var(--ion-color-light)
+ion-segment {
+  margin-top: 5px;
+  padding: 0px 10px;
+  // position: sticky;
+  // top: 5px;
+
+  ion-segment-button {
+    color: var(--ion-color-primary-contrast);
+    margin: 5px;
+    overflow: hidden;
+    box-shadow: none;
+
+    --background: var(--ion-color-primary);
+    --indicator-height: 0px;
+    --background-checked: var(--ion-color-secondary);
+    --background-focused: transparent;
+    --background-hover: transparent;
+    --border-radius: 15px;
+  }
 }
 
 ion-fab {
@@ -34,7 +67,7 @@ ion-buttons {
   }
 
   &.active {
-    background-color: rgba(var(--ion-color-primary-rgb), .1);
+    background-color: rgba(var(--ion-color-primary-rgb), 0.1);
     color: var(--ion-color-primary);
   }
 }
@@ -43,5 +76,22 @@ ion-buttons {
   ion-fab {
     animation: forwards hide 300ms;
     pointer-events: none;
+  }
+}
+
+ion-item.modo-treino {
+  --background: transparent;
+
+  ion-label {
+    color: var(--ion-color-primary-contrast);
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  ion-toggle {
+    --handle-height: 25px;
+    --handle-width: 25px;
+    border: 1px solid rgba(var(--ion-color-light-rgb), 0.1);
+    border-radius: 25px;
   }
 }

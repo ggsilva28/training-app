@@ -8,14 +8,14 @@
       </ion-row>
 
       <ion-row>
-        <ion-chip [color]="(ex.concluido) ? 'dark' : 'primary'" outline>
+        <ion-chip [color]="(ex.concluido) ? 'dark' : 'light'" outline>
           <strong> Séries: </strong> {{ex.series}}
         </ion-chip>
-        <ion-chip [color]="(ex.concluido) ? 'dark' : 'primary'" outline>
+        <ion-chip [color]="(ex.concluido) ? 'dark' : 'light'" outline>
           <strong> Repetições: </strong> {{ex.repeticoes}}
         </ion-chip>
 
-        <ion-chip *ngIf="ex.peso" [color]="(ex.concluido) ? 'dark' : 'primary'" outline>
+        <ion-chip *ngIf="ex.peso" [color]="(ex.concluido) ? 'dark' : 'light'" outline>
           <strong> Peso: </strong> {{ex.peso}}
         </ion-chip>
       </ion-row>

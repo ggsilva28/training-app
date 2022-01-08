@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 
 import { TreinosService, treino } from '../services/treinoService';
 import { ExerciciosService, exercicio } from '../services/exercicioService';
@@ -10,6 +10,7 @@ import { ExerciciosService, exercicio } from '../services/exercicioService';
 })
 
 export class HomePage {
+  @ViewChild("header") header: HTMLElement;
 
   public treinos: Partial<treino[]> = []
   public treinoSelected: treino
@@ -17,7 +18,13 @@ export class HomePage {
 
   constructor(
     private treinosService: TreinosService,
+    public element: ElementRef, 
+    public renderer: Renderer2
   ) {
+  }
+
+  ionViewWillEnter(){
+    this.renderer.setStyle(this.header['el'], 'webkitTransition', 'top 150ms');
   }
 
   async ionViewDidEnter() {
@@ -46,5 +53,13 @@ export class HomePage {
 
   alternarModoTreino(){
     this.modoTreino = !this.modoTreino
+  }
+
+  onContentScroll(event) {
+    if (event.detail.scrollTop >= 50) {
+      this.renderer.setStyle(this.header['el'], 'top', '-120px');
+    } else {
+      this.renderer.setStyle(this.header['el'], 'top', '0px');
+    }
   }
 }

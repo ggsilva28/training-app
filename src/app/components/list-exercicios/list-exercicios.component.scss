@@ -1,11 +1,18 @@
+ion-list{
+  background: transparent;
+}
+
 ion-item {
   animation: forwards fadeIn 300ms;
   margin-bottom: 15px;
   transition: 300ms;
   border-radius: 10px;
   --padding-start: 0px;
-  --background: var(--ion-color-light);
+  --background: rgba(var(--ion-color-primary-rgb), .5);
+  --color: var(--ion-color-primary-contrast);
   --border-radius: 10px;
+  border: 1px solid rgba(var(--ion-color-light-rgb), .1);
+  backdrop-filter: blur(5px);
 
   ion-label {
     font-weight: bold;
@@ -41,6 +48,9 @@ ion-item {
 
 ion-button {
   animation: forwards show 300ms;
+  --background: rgba(var(--ion-color-primary-rgb), .35);
+  --box-shadow: none;
+  backdrop-filter: blur(5px);
 }
 
 ion-chip {

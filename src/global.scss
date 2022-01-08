@@ -26,11 +26,11 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-button {
-  --border-radius: 7px;
+  --border-radius: 10px;
 }
 
 ion-toolbar {
-  --padding-top: 45px;
+  --padding-top: 15px;
   --padding-bottom: 15px;
   --padding-end: 15px;
   --padding-start: 15px;
@@ -41,8 +41,9 @@ ion-toolbar {
   }
 }
 
-ion-header {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+ion-button{
+  --box-shadow: none;
+  height: 55px;
 }
 
 .alert-button.primary {
