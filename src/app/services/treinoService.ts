@@ -67,6 +67,7 @@ export class TreinosService {
                     cssClass: 'secondary',
                 }, {
                     text: 'Adicionar',
+                    cssClass: 'primary',
                 }
             ]
         });
