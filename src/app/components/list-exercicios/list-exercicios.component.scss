@@ -1,4 +1,4 @@
-ion-list{
+ion-list {
   background: transparent;
 }
 
@@ -8,11 +8,15 @@ ion-item {
   transition: 300ms;
   border-radius: 10px;
   --padding-start: 0px;
-  --background: rgba(var(--ion-color-primary-rgb), .5);
+  --background: linear-gradient(
+    45deg,
+    rgba(var(--ion-color-primary-rgb), 0.5),
+    rgba(var(--ion-color-light-rgb), 0.05)
+  );
   --color: var(--ion-color-primary-contrast);
   --border-radius: 10px;
-  border: 1px solid rgba(var(--ion-color-light-rgb), .1);
-  backdrop-filter: blur(5px);
+  border: 1px solid rgba(var(--ion-color-light-rgb), 0.1);
+  backdrop-filter: blur(0px);
 
   ion-label {
     font-weight: bold;
@@ -22,7 +26,7 @@ ion-item {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 200px;
     height: 200px;
@@ -48,7 +52,7 @@ ion-item {
 
 ion-button {
   animation: forwards show 300ms;
-  --background: rgba(var(--ion-color-primary-rgb), .35);
+  --background: rgba(var(--ion-color-primary-rgb), 0.35);
   --box-shadow: none;
   backdrop-filter: blur(5px);
 }
