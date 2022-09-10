@@ -30,6 +30,7 @@
     "@ionic/angular": "6",
     "@ionic/angular-server": "6",
     "@ionic/storage-angular": "^3.0.6",
+    "cordova-res": "0.15.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "uuid": "^8.3.2",
