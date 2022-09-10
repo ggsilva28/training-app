@@ -1,3 +1,52 @@
-<p>
-  exercise-form works!
-</p>
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>
+      Exercício
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="modal.dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="form">
+
+    <ion-item fill="outline" mode="md">
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="name" placeholder="Digite o nome do treino" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" mode="md">
+      <ion-label position="floating">Séries</ion-label>
+      <ion-input formControlName="series" placeholder="Número de séries" type="tel"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" mode="md">
+      <ion-label position="floating">Repetições</ion-label>
+      <ion-input formControlName="repetitions" placeholder="Repetições" type="tel"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" mode="md">
+      <ion-label position="floating">Peso</ion-label>
+      <ion-input formControlName="weight" placeholder="Peso" type="tel"></ion-input>
+    </ion-item>
+
+
+    <ion-item fill="outline" mode="md">
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-select formControlName="category" placeholder="Selecione a categoria" interface="action-sheet">
+        <ion-select-option *ngFor="let i of categories" [value]="i"> {{i}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button (click)="submit()">
+      Salvar
+    </ion-button>
+
+  </form>
+</ion-content>

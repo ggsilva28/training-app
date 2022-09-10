@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
-import { StorageService } from 'src/app/services/storage.service';
+//Services
+import { StorageService } from './storage.service';
+import { EventsService } from './events.service';
 
 import { v4 as uuid } from 'uuid';
 
@@ -13,7 +15,12 @@ export type Exercise = {
   weight?: string;
   repetitions: number;
   finished?: boolean;
+  category?: string;
 }
+
+export const Categories = [
+  'Peito', 'Tríceps', 'Abdômen', 'Costa', 'Biceps', 'Ombro/Trapézio', 'Coxa/Quadríceps', 'Coxa (Posterior/Panturrilha)', 'Glúteo'
+]
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +33,15 @@ export class ExerciseService {
   constructor(
     private alert: AlertController,
     private storage: StorageService,
+    private events: EventsService,
   ) { }
 
-  async get(train_id: string) {
+  async get(train_id: string): Promise<Exercise[]> {
     const list = await this.storage.get(this.storageKey) || []
     return list.filter(item => item.train_id === train_id)
   }
 
-  async add(exercise: Exercise) {
+  async add(exercise: Exercise): Promise<void> {
     const newItem: Exercise = {
       ...exercise,
       id: uuid()
@@ -42,7 +50,8 @@ export class ExerciseService {
     const list = await this.storage.get(this.storageKey) || []
     list.push(newItem)
 
-    return await this.storage.set(this.storageKey, newItem)
+    await this.storage.set(this.storageKey, list)
+    this.events.publish('exercise-list:update')
   }
 
   async edit(exercise: Exercise): Promise<boolean> {
@@ -56,13 +65,15 @@ export class ExerciseService {
     list[index] = exercise;
 
     await this.storage.set(this.storageKey, list)
+    this.events.publish('exercise-list:update')
     return true
   }
 
   async removerPrompt(id: string) {
     const alert = await this.alert.create({
       cssClass: 'my-custom-class',
-      header: 'Remover Exercício?',
+      header: 'Excluir Exercício?',
+      message: 'Ação permanente!',
       mode: 'ios',
       buttons: [
         {
@@ -75,7 +86,8 @@ export class ExerciseService {
             const list = await this.storage.get(this.storageKey)
             const index = list.findIndex(item => item.id === id)
             list.splice(index, 1)
-            this.storage.set(this.storageKey, list)
+            await this.storage.set(this.storageKey, list)
+            this.events.publish('exercise-list:update')
           }
         }
       ]

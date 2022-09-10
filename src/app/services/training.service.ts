@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from 'src/app/services/storage.service';
 import { AlertController } from '@ionic/angular';
+
+//Services
+import { StorageService } from './storage.service';
+import { EventsService } from './events.service';
 
 import { v4 as uuid } from 'uuid';
 
@@ -18,8 +21,9 @@ export class TrainingService {
   private storageKey: string = 'app-gym:trains'
 
   constructor(
-    private alert: AlertController,
-    private storage: StorageService,
+    public alert: AlertController,
+    public storage: StorageService,
+    public events: EventsService,
   ) { }
 
 
@@ -44,6 +48,7 @@ export class TrainingService {
 
     list.push(newItem)
     await this.storage.set(this.storageKey, list)
+    this.events.publish('training-list:update')
   }
 
   async edit(train: Train): Promise<boolean> {
@@ -57,13 +62,15 @@ export class TrainingService {
     list[index] = train;
 
     await this.storage.set(this.storageKey, list)
+    this.events.publish('training-list:update')
     return true
   }
 
   async removePrompt(id: string): Promise<any> {
     const alert = await this.alert.create({
       cssClass: 'my-custom-class',
-      header: 'Remover Treino?',
+      header: 'Excluir Treino?',
+      message: 'Ação permanente!',
       mode: 'ios',
       buttons: [
         {
@@ -77,6 +84,7 @@ export class TrainingService {
             const index = list.findIndex(item => item.id === id)
             list.splice(index, 1)
             this.storage.set(this.storageKey, list)
+            this.events.publish('training-list:update')
           }
         }
       ]

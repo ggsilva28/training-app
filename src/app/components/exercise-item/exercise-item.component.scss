@@ -1,0 +1,27 @@
+.exercise-item {
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border: 1px solid var(--ion-color-medium-shade);
+  background-color: var(--ion-color-light);
+  border-radius: 10px;
+
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .info{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    .block{
+      flex: 1;
+      font-size: 14px;
+      color: var(--ion-color-dark-tint);
+    }
+  }
+}

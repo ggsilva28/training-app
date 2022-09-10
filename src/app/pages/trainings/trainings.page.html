@@ -1,9 +1,11 @@
 <ion-header mode="ios">
   <ion-toolbar>
 
-    <div class="user">
-      <ion-avatar> </ion-avatar>
-      <ion-label>Name</ion-label>
+    <div class="user" (click)="setUser()">
+      <ion-avatar>
+        <ion-img [src]="profileImage" ></ion-img>  
+      </ion-avatar>
+      <ion-label> {{user?.name}} </ion-label>
     </div>
 
     <ion-buttons slot="end">
@@ -26,6 +28,6 @@
     </ion-button>
   </div>
 
-  <training-item *ngFor="let training of trainings" [item]="training" ></training-item>
+  <training-item *ngFor="let training of trainings" [item]="training"></training-item>
 
 </ion-content>

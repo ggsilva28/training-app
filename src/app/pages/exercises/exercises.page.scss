@@ -1,0 +1,26 @@
+.line {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  opacity: .3; 
+}
+
+ion-list {
+  background-color: transparent;
+  ion-label {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+ion-footer ion-button {
+  --border-radius: 0px;
+  margin: 0px;
+  width: 100%;
+}

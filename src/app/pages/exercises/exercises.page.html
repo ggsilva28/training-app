@@ -4,14 +4,58 @@
       <ion-back-button defaultHref="trainings" text="Voltar"></ion-back-button>
     </ion-buttons>
     <ion-title> Treino {{training?.name}} </ion-title>
+
     <ion-buttons slot="end">
-      <ion-button color="danger" (click)="remove()">
-        <ion-icon name="trash-outline"></ion-icon>
+
+      <ion-button color="dark" id="click-trigger">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
       </ion-button>
+      <ion-popover trigger="click-trigger" dismissOnSelect="true" triggerAction="click">
+        <ng-template>
+
+          <ion-list>
+            <ion-item button="true" lines="none" (click)="editTraining()">
+              <ion-icon name="create-outline" slot="start"></ion-icon>
+              <ion-text>Editar</ion-text>
+            </ion-item>
+            <ion-item button="true" lines="none" (click)="removeTraining()">
+              <ion-icon color="danger" name="trash-outline" slot="start"></ion-icon>
+              <ion-text color="danger">Excluir</ion-text>
+            </ion-item>
+          </ion-list>
+
+        </ng-template>
+      </ion-popover>
+
     </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <div class="empty" *ngIf="exercises?.length == 0">
+    <ion-img src="assets/img/Gym-rafiki.svg"></ion-img>
+    <strong>Nenhum exercício adicionado ainda</strong>
+
+    <ion-button class="animate-show" color="primary" (click)="addExercise()">
+      Criar Exercício <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="line"  *ngIf="exercises?.length > 0" [ngStyle]="{backgroundColor: training?.color}"></div>
+  <ion-list *ngFor="let i of exercises">
+    <ion-label>
+      {{i.category}}
+    </ion-label>
+    <exercise-item *ngFor="let item of i.items" [exercise]="item"></exercise-item>
+  </ion-list>
+
 
 </ion-content>
+
+<ion-footer mode="md">
+  <ion-button color="medium" (click)="addExercise()">
+    Novo Exercício <ion-icon name="add-circle-outline"></ion-icon>
+  </ion-button>
+</ion-footer>

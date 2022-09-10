@@ -70,12 +70,30 @@ ion-button {
   animation: forwards show 0.3s;
 }
 
-.animate-hide{
+.animate-hide {
   animation: forwards hide 0.3s;
 }
 
-.animate-fade-in{
+.animate-fade-in {
   animation: forwards fadeIn 0.3s;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  ion-img {
+    margin: 50px auto 15px;
+    width: 240px;
+  }
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
 }
 
 @keyframes hide {

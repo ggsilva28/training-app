@@ -1,3 +1,34 @@
-<p>
-  exercise-item works!
-</p>
+<div class="exercise-item ion-activatable ripple-parent animate-show" [id]="'click-trigger' + exercise?.id">
+  <div class="title">
+    {{exercise?.name}}
+  </div>
+  <div class="info" *ngIf="exercise?.weight || exercise?.series || exercise?.repetitions">
+    <div class="block" *ngIf="exercise?.weight">
+      <strong>Peso:</strong> {{exercise?.weight}}
+    </div>
+    <div class="block" *ngIf="exercise?.series">
+      <strong>Séries:</strong> {{exercise?.series}}
+    </div>
+    <div class="block" *ngIf="exercise?.repetitions">
+      <strong>Repetições:</strong> {{exercise?.repetitions}}
+    </div>
+  </div>
+
+  <ion-ripple-effect></ion-ripple-effect>
+</div>
+
+<ion-popover [trigger]="'click-trigger' + exercise?.id" triggerAction="hover" dismissOnSelect="true">
+  <ng-template>
+    <ion-list>
+      <ion-item button="true" lines="none" (click)="edit()">
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        <ion-text>Editar</ion-text>
+      </ion-item>
+      <ion-item button="true" lines="none" (click)="remove()">
+        <ion-icon color="danger" name="trash-outline" slot="start"></ion-icon>
+        <ion-text color="danger">Excluir</ion-text>
+      </ion-item>
+    </ion-list>
+
+  </ng-template>
+</ion-popover>

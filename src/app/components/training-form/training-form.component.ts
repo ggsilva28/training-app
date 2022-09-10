@@ -6,8 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //Services
 import { TrainingService, Train } from '../../services/training.service';
 import { ToastService } from '../../services/toast.service';
-import { EventsService } from '../..//services/events.service';
-
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-training-form',
@@ -20,13 +19,13 @@ export class TrainingFormComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
-    public formBuild: FormBuilder,
+    public formBuilder: FormBuilder,
     public training: TrainingService,
     public toast: ToastService,
     public modal: ModalController,
     public events: EventsService,
   ) {
-    this.form = this.formBuild.group({
+    this.form = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
       color: ['', [Validators.required]]
@@ -34,7 +33,6 @@ export class TrainingFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('data', this.data)
     if (this.data)
       this.form.patchValue(this.data)
   }
@@ -69,9 +67,7 @@ export class TrainingFormComponent implements OnInit {
 
   success(msg: string) {
     this.toast.show(msg)
-    this.events.publish('training-list:update')
     this.modal.dismiss();
-
   }
 
 }

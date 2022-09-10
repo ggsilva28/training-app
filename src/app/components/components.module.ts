@@ -8,6 +8,7 @@ import { ExerciseItemComponent } from './exercise-item/exercise-item.component';
 import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
 import { TrainingItemComponent } from './training-item/training-item.component';
 import { TrainingFormComponent } from './training-form/training-form.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
     declarations: [
@@ -15,12 +16,14 @@ import { TrainingFormComponent } from './training-form/training-form.component';
         ExerciseFormComponent,
         TrainingItemComponent,
         TrainingFormComponent,
+        UserFormComponent,
     ],
     exports: [
         ExerciseItemComponent,
         ExerciseFormComponent,
         TrainingItemComponent,
         TrainingFormComponent,
+        UserFormComponent,
     ],
     imports: [
         CommonModule,
