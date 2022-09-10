@@ -1,0 +1,34 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+      <ion-title>
+          Criar treino
+      </ion-title>
+
+      <ion-buttons slot="end">
+          <ion-button (click)="modal.dismiss()">
+              <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="form">
+
+      <ion-item fill="outline" mode="md">
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input formControlName="name" placeholder="Digite o nome do treino" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item fill="outline" mode="md">
+          <ion-label position="floating">Cor</ion-label>
+          <ion-input formControlName="color" placeholder="Selecione uma cor" type="color"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="submit()">
+          Criar
+      </ion-button>
+
+  </form>
+</ion-content>

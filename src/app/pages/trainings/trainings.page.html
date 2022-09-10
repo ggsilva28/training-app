@@ -1,0 +1,31 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+
+    <div class="user">
+      <ion-avatar> </ion-avatar>
+      <ion-label>Name</ion-label>
+    </div>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addTraining()">
+        Novo treino <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="empty" *ngIf="trainings?.length == 0">
+    <ion-img src="assets/img/Gym-rafiki.svg"></ion-img>
+    <strong>Nenhum treino adicionado ainda</strong>
+
+    <ion-button class="animate-show" color="primary" (click)="addTraining()">
+      Criar treino <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <training-item *ngFor="let training of trainings" [item]="training" ></training-item>
+
+</ion-content>

@@ -1,21 +1,33 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
-import { ListExerciciosComponent } from './list-exercicios/list-exercicios.component';
+import { ExerciseItemComponent } from './exercise-item/exercise-item.component';
+import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
+import { TrainingItemComponent } from './training-item/training-item.component';
+import { TrainingFormComponent } from './training-form/training-form.component';
 
 @NgModule({
     declarations: [
-        ListExerciciosComponent
+        ExerciseItemComponent,
+        ExerciseFormComponent,
+        TrainingItemComponent,
+        TrainingFormComponent,
     ],
     exports: [
-        ListExerciciosComponent
+        ExerciseItemComponent,
+        ExerciseFormComponent,
+        TrainingItemComponent,
+        TrainingFormComponent,
     ],
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         IonicModule,
+        RouterModule,
     ],
     schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })

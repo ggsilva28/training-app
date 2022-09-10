@@ -1,0 +1,7 @@
+<div class="train-item animate-show" *ngIf="item" [routerLink]="['/exercises', item.id]">
+  <div class="line" [ngStyle]="{backgroundColor: item?.color}"></div>
+  <div class="text">
+    <span class="title"> Treino {{item?.name}}</span>
+    <span class="count">{{countEx}} Exercícios</span>
+  </div>
+</div>
