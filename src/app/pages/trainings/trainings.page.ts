@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { Train, TrainingService } from '../../services/training.service';
 import { EventsService } from '../../services/events.service';
 import { UserService } from '../../services/user.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 //Pages
 import { TrainingFormComponent } from './../../components/training-form/training-form.component';
@@ -26,10 +27,12 @@ export class TrainingsPage implements OnInit {
     public modal: ModalController,
     public training: TrainingService,
     public events: EventsService,
-    public userService: UserService
+    public userService: UserService,
+    public firebase: FirebaseService,
   ) {
     this.events.subscribe('training-list:update', this.getTrainings.bind(this))
     this.events.subscribe('user:set', this.getUser.bind(this))
+    this.events.subscribe('firebase:get', this.getUser.bind(this))
   }
 
   ngOnInit() {

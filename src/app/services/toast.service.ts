@@ -18,7 +18,7 @@ export class ToastService {
       header: title,
       color: color,
       mode: 'ios',
-      duration: 3000,
+      duration: 1000,
     })
 
     toast.present();

@@ -1,29 +1,39 @@
 <ion-header mode="ios">
-  <ion-toolbar>
-      <ion-title>
-          Seu usuário
-      </ion-title>
+    <ion-toolbar>
+        <ion-title>
+            Seu usuário
+        </ion-title>
 
-      <ion-buttons slot="end">
-          <ion-button (click)="modal.dismiss()">
-              <ion-icon name="close-outline"></ion-icon>
-          </ion-button>
-      </ion-buttons>
-  </ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">
+                <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <form [formGroup]="form">
+    <form [formGroup]="form">
 
-      <ion-item fill="outline" mode="md">
-          <ion-label position="floating">Nome</ion-label>
-          <ion-input formControlName="name" placeholder="Digite o nome do treino" type="text"></ion-input>
-      </ion-item>
+        <ion-item fill="outline" mode="md">
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input formControlName="name" placeholder="Digite o seu nome" type="text"></ion-input>
+        </ion-item>
 
-      <ion-button (click)="submit()">
-          Salvar
-      </ion-button>
+        <ion-item fill="outline" mode="md">
+            <ion-label position="floating">Usuário</ion-label>
+            <ion-input formControlName="username" placeholder="Usuário" type="text"></ion-input>
+        </ion-item>
 
-  </form>
+        <ion-item fill="outline" lines="none">
+            <ion-icon color="danger" name="warning-outline" slot="start"></ion-icon>
+            <p class="warning-text"> O usuário será o nome utilizado para vincular seus dados a nuvem </p>
+        </ion-item>
+
+        <ion-button (click)="submit()">
+            Salvar
+        </ion-button>
+
+    </form>
 </ion-content>

@@ -41,6 +41,11 @@ export class ExerciseService {
     return list.filter(item => item.train_id === train_id)
   }
 
+  async getById(train_id: string, id: string): Promise<Exercise> {
+    const list = await this.get(train_id);
+    return list.filter(item => item.id === id)[0];
+  }
+
   async add(exercise: Exercise): Promise<void> {
     const newItem: Exercise = {
       ...exercise,
@@ -67,6 +72,23 @@ export class ExerciseService {
     await this.storage.set(this.storageKey, list)
     this.events.publish('exercise-list:update')
     return true
+  }
+
+  async set(exercise: Exercise): Promise<void> {
+    const list = await this.storage.get(this.storageKey) || []
+    list.push(exercise)
+
+    await this.storage.set(this.storageKey, list)
+    this.events.publish('exercise-list:update')
+  }
+
+  async update(exercise: Exercise): Promise<void> {
+    const exists = await this.getById(exercise.train_id, exercise.id)
+    if (exists) {
+      this.edit(exercise)
+    } else {
+      this.set(exercise)
+    }
   }
 
   async removerPrompt(id: string) {

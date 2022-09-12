@@ -6,6 +6,7 @@ import { EventsService } from './events.service';
 
 export type User = {
   name: string;
+  username: string;
 }
 
 @Injectable({

@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 //Services
 import { StorageService } from './storage.service';
 import { EventsService } from './events.service';
+import { Exercise } from './exercise.service';
 
 import { v4 as uuid } from 'uuid';
 
@@ -11,6 +12,7 @@ export type Train = {
   id?: string;
   name: string;
   color: string;
+  exercises?: Exercise[];
 }
 
 @Injectable({
@@ -34,7 +36,6 @@ export class TrainingService {
 
   async getById(id: string): Promise<Train> {
     const list = await this.get();
-    console.log(list)
     return list.filter(item => item.id === id)[0];
   }
 
@@ -64,6 +65,23 @@ export class TrainingService {
     await this.storage.set(this.storageKey, list)
     this.events.publish('training-list:update')
     return true
+  }
+
+  async set(train: Train): Promise<void> {
+    const list = await this.storage.get(this.storageKey) || []
+
+    list.push(train)
+    await this.storage.set(this.storageKey, list)
+    this.events.publish('training-list:update')
+  }
+
+  async update(train: Train): Promise<void> {
+    const exists = await this.getById(train.id)
+    if (exists) {
+      this.edit(train)
+    } else {
+      this.set(train)
+    }
   }
 
   async removePrompt(id: string): Promise<any> {

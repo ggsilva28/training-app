@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gym-app-71b95": {
+      "hosting": {
+        "app": [
+          "gym-app-71b95"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gym-app-71b95"
+  }
+}
