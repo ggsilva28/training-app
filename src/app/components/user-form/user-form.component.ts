@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 //Services
 import { UserService, User } from '../../services/user.service';
@@ -16,10 +16,10 @@ export class UserFormComponent implements OnInit {
 
   @Input() data: User = null;
 
-  public form: FormGroup
+  public form: UntypedFormGroup
 
   constructor(
-    public formBuilder: FormBuilder,
+    public formBuilder: UntypedFormBuilder,
     public toast: ToastService,
     public modal: ModalController,
     public user: UserService,

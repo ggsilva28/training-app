@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 //Services
 import { ExerciseService, Exercise, Categories } from 'src/app/services/exercise.service';
@@ -17,12 +17,12 @@ export class ExerciseFormComponent implements OnInit {
   @Input() data: Exercise = null
   @Input() train_id: string = ''
 
-  public form: FormGroup
+  public form: UntypedFormGroup
 
   public categories = Categories
 
   constructor(
-    public formBuilder: FormBuilder,
+    public formBuilder: UntypedFormBuilder,
     public toast: ToastService,
     public modal: ModalController,
     public exercise: ExerciseService,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 //Services
 import { TrainingService, Train } from '../../services/training.service';
@@ -16,10 +16,10 @@ import { EventsService } from '../../services/events.service';
 export class TrainingFormComponent implements OnInit {
 
   public data: Train = null;
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   constructor(
-    public formBuilder: FormBuilder,
+    public formBuilder: UntypedFormBuilder,
     public training: TrainingService,
     public toast: ToastService,
     public modal: ModalController,
