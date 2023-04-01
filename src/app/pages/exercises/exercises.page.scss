@@ -4,11 +4,12 @@
   height: 100%;
   left: 0px;
   top: 0px;
-  opacity: .3; 
+  opacity: 0.3;
 }
 
 ion-list {
   background-color: transparent;
+
   ion-label {
     position: relative;
     display: block;
@@ -23,4 +24,10 @@ ion-footer ion-button {
   --border-radius: 0px;
   margin: 0px;
   width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .line {
+    width: 35%;
+  }
 }

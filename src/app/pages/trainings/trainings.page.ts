@@ -17,7 +17,7 @@ import { UserFormComponent } from './../../components/user-form/user-form.compon
   templateUrl: './trainings.page.html',
   styleUrls: ['./trainings.page.scss'],
 })
-export class TrainingsPage implements OnInit {
+export class TrainingsPage {
 
   public trainings: Partial<Train[]> = []
   public user: User
@@ -33,9 +33,6 @@ export class TrainingsPage implements OnInit {
     this.events.subscribe('training-list:update', this.getTrainings.bind(this))
     this.events.subscribe('user:set', this.getUser.bind(this))
     this.events.subscribe('firebase:get', this.getUser.bind(this))
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {
@@ -59,7 +56,6 @@ export class TrainingsPage implements OnInit {
       component: TrainingFormComponent,
       breakpoints: [.7],
       initialBreakpoint: .7,
-      swipeToClose: true,
     })
 
     modal.present()
@@ -70,7 +66,6 @@ export class TrainingsPage implements OnInit {
       component: UserFormComponent,
       breakpoints: [.7],
       initialBreakpoint: .7,
-      swipeToClose: true,
       componentProps: {
         data: this.user
       }

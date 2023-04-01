@@ -12,7 +12,7 @@ import { ExerciseFormComponent } from './../../components/exercise-form/exercise
   templateUrl: './exercise-item.component.html',
   styleUrls: ['./exercise-item.component.scss'],
 })
-export class ExerciseItemComponent implements OnInit {
+export class ExerciseItemComponent {
 
   @Input() exercise: Exercise
 
@@ -21,14 +21,11 @@ export class ExerciseItemComponent implements OnInit {
     public exerciseService: ExerciseService
   ) { }
 
-  ngOnInit() { }
-
   async edit() {
     const modal = await this.modal.create({
       component: ExerciseFormComponent,
       breakpoints: [.7],
       initialBreakpoint: .7,
-      swipeToClose: true,
       componentProps: {
         train_id: this.exercise.train_id,
         data: this.exercise

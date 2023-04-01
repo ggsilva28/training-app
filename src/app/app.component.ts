@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-
 import { StatusBar } from '@capacitor/status-bar';
 import { Capacitor } from '@capacitor/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -19,8 +19,5 @@ export class AppComponent {
     }
 
     await this.storage.create();
-  }
-
-  ngOnInit() {
   }
 }

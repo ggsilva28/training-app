@@ -17,7 +17,7 @@
   <ion-ripple-effect></ion-ripple-effect>
 </div>
 
-<ion-popover [trigger]="'click-trigger' + exercise?.id" triggerAction="hover" dismissOnSelect="true">
+<ion-popover [trigger]="'click-trigger' + exercise?.id" triggerAction="click" dismissOnSelect="true">
   <ng-template>
     <ion-list>
       <ion-item button="true" lines="none" (click)="edit()">

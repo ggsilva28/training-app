@@ -9,7 +9,7 @@ import { ExerciseService } from '../../services/exercise.service';
   templateUrl: './training-item.component.html',
   styleUrls: ['./training-item.component.scss'],
 })
-export class TrainingItemComponent implements OnInit {
+export class TrainingItemComponent {
 
   @Input() item: Train;
 
@@ -18,8 +18,6 @@ export class TrainingItemComponent implements OnInit {
   constructor(
     public exercises: ExerciseService
   ) { }
-
-  ngOnInit() { }
 
   async ngOnChanges(changes: SimpleChange) {
 

@@ -66,7 +66,6 @@ export class ExercisesPage implements OnInit {
       component: TrainingFormComponent,
       breakpoints: [.7],
       initialBreakpoint: .7,
-      swipeToClose: true,
       componentProps: {
         data: this.training
       }
@@ -99,7 +98,6 @@ export class ExercisesPage implements OnInit {
       component: ExerciseFormComponent,
       breakpoints: [.7],
       initialBreakpoint: .7,
-      swipeToClose: true,
       componentProps: {
         train_id: this.train_id
       }

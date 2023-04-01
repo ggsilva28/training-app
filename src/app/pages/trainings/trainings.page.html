@@ -19,56 +19,61 @@
 
 <ion-content class="ion-padding">
 
-  <div class="empty" *ngIf="trainings?.length == 0">
-    <div class="sync">
-      <p>Já possui algum treino com o username <strong> {{user?.username}}? </strong></p>
+  <div class="page-limit">
 
-      <ion-button class="animate-show" color="secondary" (click)="firebase.get()">
-        Baixar treinos <ion-icon name="cloud-download-outline"></ion-icon>
-      </ion-button>
-    </div>
 
-    <ion-img src="assets/img/Gym-rafiki.svg"></ion-img>
-    <strong>Nenhum treino adicionado ainda</strong>
+    <div class="empty" *ngIf="trainings?.length === 0">
+      <div class="sync">
+        <p>Já possui algum treino com o username <strong> {{user?.username}}? </strong></p>
 
-    <ion-button class="animate-show" color="primary" (click)="addTraining()">
-      Criar treino <ion-icon name="add-circle-outline"></ion-icon>
-    </ion-button>
-
-  </div>
-
-  <training-item *ngFor="let training of trainings" [item]="training"></training-item>
-
-  <ion-accordion-group *ngIf="trainings?.length > 0">
-
-    <ion-accordion value="first">
-
-      <ion-item slot="header" color="medium">
-        <ion-label>Cloud</ion-label>
-      </ion-item>
-
-      <div slot="content">
-
-        <div class="sync primary">
-          <p>Atualize seus treino em <strong> {{user?.username}}</strong></p>
-          <p class="warning">Isso irá sobrescrever todos seus treinos salvos na nuvem </p>
-
-          <ion-button class="animate-show" color="primary" (click)="firebase.sync()">
-            Subir treinos <ion-icon name="cloud-upload-outline"></ion-icon>
-          </ion-button>
-        </div>
-
-        <div class="sync">
-          <p>Baixe treinos de <strong> {{user?.username}}</strong></p>
-          <ion-button class="animate-show" color="secondary" (click)="firebase.get()">
-            Baixar treinos <ion-icon name="cloud-download-outline"></ion-icon>
-          </ion-button>
-        </div>
-
+        <ion-button class="animate-show" color="secondary" (click)="firebase.get()">
+          Baixar treinos <ion-icon name="cloud-download-outline"></ion-icon>
+        </ion-button>
       </div>
 
-    </ion-accordion>
+      <ion-img src="assets/img/Gym-rafiki.svg"></ion-img>
+      <strong>Nenhum treino adicionado ainda</strong>
 
-  </ion-accordion-group>
+      <ion-button class="animate-show" color="primary" (click)="addTraining()">
+        Criar treino <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+
+    </div>
+
+    <training-item *ngFor="let training of trainings" [item]="training"></training-item>
+
+    <ion-accordion-group *ngIf="trainings?.length > 0">
+
+      <ion-accordion value="first">
+
+        <ion-item slot="header" color="medium">
+          <ion-label>Cloud</ion-label>
+        </ion-item>
+
+        <div slot="content">
+
+          <div class="sync primary">
+            <p>Atualize seus treino em <strong> {{user?.username}}</strong></p>
+            <p class="warning">Isso irá sobrescrever todos seus treinos salvos na nuvem </p>
+
+            <ion-button class="animate-show" color="primary" (click)="firebase.sync()">
+              Subir treinos <ion-icon name="cloud-upload-outline"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div class="sync">
+            <p>Baixe treinos de <strong> {{user?.username}}</strong></p>
+            <ion-button class="animate-show" color="secondary" (click)="firebase.get()">
+              Baixar treinos <ion-icon name="cloud-download-outline"></ion-icon>
+            </ion-button>
+          </div>
+
+        </div>
+
+      </ion-accordion>
+
+    </ion-accordion-group>
+
+  </div>
 
 </ion-content>
