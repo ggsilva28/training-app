@@ -19,7 +19,7 @@ export type Exercise = {
 }
 
 export const Categories = [
-  'Peito', 'Tríceps', 'Abdômen', 'Costa', 'Biceps', 'Ombro/Trapézio', 'Coxa/Quadríceps', 'Coxa (Posterior/Panturrilha)', 'Glúteo'
+  'Peito', 'Tríceps', 'Abdômen', 'Costa', 'Biceps', 'Ombro/Trapézio', 'Coxa/Quadríceps', 'Coxa (Posterior/Panturrilha)', 'Glúteo', 'Cárdio'
 ]
 
 @Injectable({
