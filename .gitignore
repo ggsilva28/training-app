@@ -39,3 +39,5 @@ resources/android/**/*
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+/src/enviromments
