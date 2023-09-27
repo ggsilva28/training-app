@@ -7,7 +7,7 @@ import { Component, OnInit, signal } from '@angular/core';
 })
 export class ExercisePage implements OnInit {
 
-  exercise = signal();
+  exercise = signal(null);
 
   constructor() { }
 
