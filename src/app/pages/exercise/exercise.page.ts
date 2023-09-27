@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-exercise',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercise.page.scss'],
 })
 export class ExercisePage implements OnInit {
+
+  exercise = signal();
 
   constructor() { }
 
