@@ -16,6 +16,10 @@ export type Exercise = {
   repetitions: number;
   finished?: boolean;
   category?: string;
+  history?: {
+    date: Date,
+    weight: string
+  }[]
 }
 
 export const Categories = [
@@ -38,11 +42,13 @@ export class ExerciseService {
 
   async get(train_id: string): Promise<Exercise[]> {
     const list = await this.storage.get(this.storageKey) || []
+
     return list.filter(item => item.train_id === train_id)
   }
 
   async getById(train_id: string, id: string): Promise<Exercise> {
     const list = await this.get(train_id);
+
     return list.filter(item => item.id === id)[0];
   }
 
@@ -53,19 +59,33 @@ export class ExerciseService {
     }
 
     const list = await this.storage.get(this.storageKey) || []
-    list.push(newItem)
+    list.push({...newItem, history: [{
+      date: new Date(),
+      weight: newItem.weight
+    }]})
 
     await this.storage.set(this.storageKey, list)
     this.events.publish('exercise-list:update')
   }
 
   async edit(exercise: Exercise): Promise<boolean> {
-    const list = await this.storage.get(this.storageKey)
+    const list: Exercise[] = await this.storage.get(this.storageKey)
     const index = list.findIndex(x => x.id == exercise.id)
 
     if (index < 0) {
       return false
     }
+
+    if(list[index].history?.length > 0 && list[index].history !== undefined){
+      list[index].history.push({date: new Date(), weight: exercise.weight})
+    }else{
+      list[index].history = [{
+        date: new Date(),
+        weight: exercise.weight
+      }]
+    }
+
+    exercise.history = list[index].history
 
     list[index] = exercise;
 

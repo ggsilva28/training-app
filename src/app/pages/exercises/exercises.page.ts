@@ -64,8 +64,8 @@ export class ExercisesPage implements OnInit {
   async editTraining() {
     const modal = await this.modal.create({
       component: TrainingFormComponent,
-      breakpoints: [.7],
-      initialBreakpoint: .7,
+      breakpoints: [.7, 1],
+      initialBreakpoint: 1,
       componentProps: {
         data: this.training
       }
@@ -96,8 +96,8 @@ export class ExercisesPage implements OnInit {
   async addExercise() {
     const modal = await this.modal.create({
       component: ExerciseFormComponent,
-      breakpoints: [.7],
-      initialBreakpoint: .7,
+      breakpoints: [.7, 1],
+      initialBreakpoint: 1,
       componentProps: {
         train_id: this.train_id
       }

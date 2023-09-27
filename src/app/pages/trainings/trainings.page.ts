@@ -54,8 +54,8 @@ export class TrainingsPage {
   async addTraining() {
     const modal = await this.modal.create({
       component: TrainingFormComponent,
-      breakpoints: [.7],
-      initialBreakpoint: .7,
+      breakpoints: [.7, 1],
+      initialBreakpoint: 1,
     })
 
     modal.present()
@@ -64,8 +64,8 @@ export class TrainingsPage {
   async setUser() {
     const modal = await this.modal.create({
       component: UserFormComponent,
-      breakpoints: [.7],
-      initialBreakpoint: .7,
+      breakpoints: [.7, 1],
+      initialBreakpoint: 1,
       componentProps: {
         data: this.user
       }

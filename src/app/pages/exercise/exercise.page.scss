@@ -1,0 +1,18 @@
+.info-block {
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border: 1px solid var(--ion-color-medium-shade);
+  background-color: var(--ion-color-light);
+  border-radius: 10px;
+
+  .label{
+    font-weight: 700;
+    font-size: 12px;
+  }
+}
+
+h3{
+  margin-top: 32px;
+  margin-bottom: 12px;
+}

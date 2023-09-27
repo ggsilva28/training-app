@@ -1,9 +1,71 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar>
-    <ion-title>exercise</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="trainings" text="Voltar"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title> {{exercise()?.name}} </ion-title>
+
+    <ion-buttons slot="end">
+
+      <ion-button color="dark" id="click-trigger">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+      <ion-popover
+        trigger="click-trigger"
+        dismissOnSelect="true"
+        triggerAction="click"
+      >
+        <ng-template>
+          <ion-list>
+            <ion-item button="true" lines="none" (click)="edit()">
+              <ion-icon name="create-outline" slot="start"></ion-icon>
+              <ion-text>Editar</ion-text>
+            </ion-item>
+            <ion-item button="true" lines="none" (click)="remove()">
+              <ion-icon
+                color="danger"
+                name="trash-outline"
+                slot="start"
+              ></ion-icon>
+              <ion-text color="danger">Excluir</ion-text>
+            </ion-item>
+          </ion-list>
+        </ng-template>
+      </ion-popover>
+
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <div class="page-limit">
+      <div class="info-block">
+        <div class="label"> Categoria </div>
+        <div class="value"> {{exercise()?.category}} </div>
+      </div>
+      <div class="info-block">
+        <div class="label"> Peso </div>
+        <div class="value"> {{exercise()?.weight}} </div>
+      </div>
+      <div class="info-block">
+        <div class="label"> Séries </div>
+        <div class="value"> {{exercise()?.series}} </div>
+      </div>
+      <div class="info-block">
+        <div class="label"> Repetições </div>
+        <div class="value"> {{exercise()?.repetitions}} </div>
+      </div>
+
+      <h3><strong>Histórico de peso</strong></h3>
+
+        <div class="info-block" *ngFor="let item of exercise()?.history">
+          <div class="label"> {{item.date | date: 'dd/MM YYYY'}} </div>
+          <div class="value"> Peso: {{item.weight }} </div>
+        </div>
+  </div>
+
 
 </ion-content>

@@ -16,12 +16,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/trainings/trainings.module').then( m => m.TrainingsPageModule)
   },
   {
-    path: 'exercise/:id',
+    path: 'exercise/:train_id/:id',
     loadChildren: () => import('./pages/exercise/exercise.module').then( m => m.ExercisePageModule)
   },
-
-
-
 ];
 
 @NgModule({

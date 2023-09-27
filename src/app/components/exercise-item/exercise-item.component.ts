@@ -17,26 +17,8 @@ export class ExerciseItemComponent {
   @Input() exercise: Exercise
 
   constructor(
-    public modal: ModalController,
-    public exerciseService: ExerciseService
   ) { }
 
-  async edit() {
-    const modal = await this.modal.create({
-      component: ExerciseFormComponent,
-      breakpoints: [.7],
-      initialBreakpoint: .7,
-      componentProps: {
-        train_id: this.exercise.train_id,
-        data: this.exercise
-      }
-    })
 
-    modal.present()
-  }
-
-  remove() {
-    this.exerciseService.removerPrompt(this.exercise.id)
-  }
 
 }
