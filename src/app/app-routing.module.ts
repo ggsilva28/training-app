@@ -15,6 +15,11 @@ const routes: Routes = [
     path: 'trainings',
     loadChildren: () => import('./pages/trainings/trainings.module').then( m => m.TrainingsPageModule)
   },
+  {
+    path: 'exercise/:id',
+    loadChildren: () => import('./pages/exercise/exercise.module').then( m => m.ExercisePageModule)
+  },
+
 
 
 ];

@@ -1,4 +1,4 @@
-<div class="exercise-item ion-activatable ripple-parent animate-show" [id]="'click-trigger' + exercise?.id">
+<div class="exercise-item ion-activatable ripple-parent animate-show" [routerLink]="['/exercise', exercise.id]">
   <div class="title">
     {{exercise?.name}}
   </div>
@@ -16,19 +16,3 @@
 
   <ion-ripple-effect></ion-ripple-effect>
 </div>
-
-<ion-popover [trigger]="'click-trigger' + exercise?.id" triggerAction="click" dismissOnSelect="true">
-  <ng-template>
-    <ion-list>
-      <ion-item button="true" lines="none" (click)="edit()">
-        <ion-icon name="create-outline" slot="start"></ion-icon>
-        <ion-text>Editar</ion-text>
-      </ion-item>
-      <ion-item button="true" lines="none" (click)="remove()">
-        <ion-icon color="danger" name="trash-outline" slot="start"></ion-icon>
-        <ion-text color="danger">Excluir</ion-text>
-      </ion-item>
-    </ion-list>
-
-  </ng-template>
-</ion-popover>

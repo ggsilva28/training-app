@@ -40,4 +40,3 @@ resources/android/**/*
 *-debug.log
 .runtimeconfig.json
 
-/src/enviromments
